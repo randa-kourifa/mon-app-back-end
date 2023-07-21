@@ -110,4 +110,4 @@ export const updateuser = async (req, res) => {
       message: error.message,
     });
   }
-};
+};  
