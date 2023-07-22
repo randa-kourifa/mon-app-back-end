@@ -1,7 +1,6 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 import patientRouter from "./routes/patient.js";
 import userRouter from "./routes/user.js";
@@ -26,12 +25,3 @@ app.use("/patient", patientRouter);
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port " + process.env.PORT);
 });
-const secretKey = process.env.JWT_SECRET;
-const payload = { userId: "votre-id-d'utilisateur" };
-const token = jwt.sign(payload, secretKey, { expiresIn: "1000h" });
-try {
-  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-  console.log(decodedToken);
-} catch (error) {
-  console.error(error.message);
-}
