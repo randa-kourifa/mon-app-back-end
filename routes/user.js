@@ -9,13 +9,13 @@ router.get("/", getallusers), //testé
       message: "Login successful",
       user: req.user,
     });
-  }), //testé
-  router.post("/signup", RegisterUser, (req, res) => {
-    res.status(201).json({
-      message: "User registered successfully",
-      user: req.user,
-    });
-  }), //testé
-  router.put("/:id", updateuser), //TESTé
-  router.delete("/:id", deleteuser); //testé
+  }); //testé
+router.post("/signup", RegisterUser, (req, res) => {
+  res.status(201).json({
+    message: "User registered successfully",
+    user: req.user,
+  });
+}); //testé
+router.put("/:id", updateuser); //TESTé
+router.delete("/:id", deleteuser); //testé
 export default router;
