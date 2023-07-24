@@ -40,22 +40,48 @@ export const deletepatient = async (req, res) => {
     });
   }
 };
-export const updatepatient = async (req, res) => {
+// export const updatepatient = async (req, res) => {
+//   try {
+//     const getID = req.params.id;
+//     const updateData = req.body;
+
+//     const updatedpatient = await Patient.findByIdAndUpdate(getID, updateData, {
+//       new: true,
+//     });
+
+//     if (!updatedpatient) {
+//       return res.status(404).json({
+//         message: "User not found",
+//       });
+//     }
+
+//     res.status(200).json(updatedpatient);
+//   } catch (error) {
+//     res.status(500).json({
+//       location: "error in update patient",
+//       message: error.message,
+//     });
+//   }
+// };
+const updatepatient = async (req, res) => {
   try {
-    const getID = req.params.id;
-    const updateData = req.body;
+    const patientId = req.params.id;
+    const updatedData = req.body;
 
-    const updatedpatient = await Patient.findByIdAndUpdate(getID, updateData, {
-      new: true,
-    });
+    // Utilisez mongoose.Types.ObjectId pour convertir la chaîne de l'ID en ObjectId
+    const objectIdPatientId = mongoose.Types.ObjectId(patientId);
 
-    if (!updatedpatient) {
-      return res.status(404).json({
-        message: "User not found",
-      });
+    // Utilisez la méthode updateOne pour mettre à jour le document du patient
+    const result = await Patient.updateOne(
+      { _id: objectIdPatientId },
+      updatedData
+    );
+
+    if (result.nModified > 0) {
+      res.status(200).json({ message: "Patient updated successfully" });
+    } else {
+      res.status(404).json({ message: "Patient not found" });
     }
-
-    res.status(200).json(updatedpatient);
   } catch (error) {
     res.status(500).json({
       location: "error in update patient",
