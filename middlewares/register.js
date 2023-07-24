@@ -1,9 +1,9 @@
 // middleware.js
-
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import User from "../schemas/user.js";
-
+dotenv.config();
 export const RegisterUser = async (req, res, next) => {
   // Get user input
   const { first_name, last_name, email, password } = req.body;
