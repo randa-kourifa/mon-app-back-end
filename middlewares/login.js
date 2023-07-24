@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../schemas/user.js";
-
+const JWT_SECRET =
+  "randaquiessayedereparersontokenpourlapremierfois123456789try2";
 export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -17,7 +18,7 @@ export const loginUser = async (req, res, next) => {
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign(
         { user_id: user._id, email: user.email },
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         {
           expiresIn: "2h",
         }
