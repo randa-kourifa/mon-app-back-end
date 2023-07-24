@@ -40,7 +40,7 @@ export const RegisterUser = async (req, res, next) => {
       { user_id: newUser._id, email: newUser.email },
       process.env.JWT_SECRET,
       {
-        expiresIn: "1000h",
+        expiresIn: "100000h",
       }
     );
 
