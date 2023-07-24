@@ -28,31 +28,3 @@ app.use("/patient", patientRouter);
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port " + process.env.PORT);
 });
-// dotenv.config();
-// mongoose.set("strictQuery", false);
-// mongoose
-//   .connect(process.env.MONGO_URL)
-//   .then(() => {
-//     console.log("Connecté à la base de données MongoDB !");
-//     // Reste de votre code
-//   })
-//   .catch((err) => {
-//     console.error("Erreur de connexion à la base de données : ", err);
-//   });
-
-// const app = express();
-// //body parser
-// app.use(cors());
-// app.use(express.json());
-
-// // define routers
-// app.use("/user", userRouter);
-// app.use("/patient", patientRouter);
-// //app.use("/patient", patientRouter);
-// //test
-// app.get("/ping", (req, res) => {
-//   res.send("pong");
-// });
-// app.listen(process.env.PORT, () => {
-//   console.log("Server is running on port " + process.env.PORT);
-// });
