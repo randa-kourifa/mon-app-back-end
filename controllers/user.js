@@ -53,7 +53,7 @@ export const adduser = async (req, res) => {
     const user = req.body;
     console.log(user);
 
-    const isFound = await User.findOne({ email: user.email }).maxTimeMS(20000);
+    const isFound = await User.findOne({ email: user.email }).maxTimeMS(30000);
 
     if (isFound) {
       return res.status(400).json({ message: "user already exists" });

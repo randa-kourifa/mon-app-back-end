@@ -11,7 +11,6 @@ async function connectToDatabase() {
     await mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      connectTimeoutMS: 300000000,
     });
     console.log("Connected to database successfully!");
   } catch (error) {
