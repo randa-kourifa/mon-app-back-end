@@ -1,11 +1,7 @@
 import express from "express";
-import {
-  adduser,
-  deleteuser,
-  getallusers,
-  updateuser,
-} from "../controllers/user.js";
+import { deleteuser, getallusers, updateuser } from "../controllers/user.js";
 import { loginUser } from "../middlewares/login.js";
+import { registerUser } from "../middlewares/register.js";
 export const router = express.Router();
 router.get("/", getallusers), //testé
   router.post("/login", loginUser, (req, res) => {
@@ -14,7 +10,7 @@ router.get("/", getallusers), //testé
       user: req.user,
     });
   }); //testé
-router.post("/signup", adduser, (req, res) => {
+router.post("/signup", registerUser, (req, res) => {
   res.status(201).json({
     message: "User registered successfully",
     user: req.user,
