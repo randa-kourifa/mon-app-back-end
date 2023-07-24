@@ -8,10 +8,13 @@ dotenv.config();
 mongoose.set("strictQuery", false);
 async function connectToDatabase() {
   try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(
+      "MONGO_URL=mongodb+srv://randakourifa:3z2LWJBXY8MgjCOt@cluster0.t0ljlki.mongodb.net/test2retryWrites=true&w=majority",
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
     console.log("Connected to database successfully!");
   } catch (error) {
     console.error("Error connecting to database:", error);
