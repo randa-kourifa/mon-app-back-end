@@ -17,7 +17,11 @@ export const RegisterUser = async (req, res, next) => {
 
   try {
     // check if user already exists
-    const oldUser = await User.findOne({ email });
+    const oldUser = await User.findOne(
+      { email }.maxTimeMS(20000).exec((err, user) => {
+        // Traitement de la réponse ou gestion des erreurs
+      })
+    );
     if (oldUser) {
       return res.status(409).json({
         message: "User Already Exists. Please Login",
