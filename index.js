@@ -33,9 +33,15 @@ dotenv.config();
 // });
 dotenv.config();
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.MONGO_URL).then(() => {
-  console.log("Connecté à la base de données MongoDB !");
-});
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then(() => {
+    console.log("Connecté à la base de données MongoDB !");
+    // Reste de votre code
+  })
+  .catch((err) => {
+    console.error("Erreur de connexion à la base de données : ", err);
+  });
 
 const app = express();
 //body parser

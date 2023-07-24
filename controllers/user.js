@@ -17,7 +17,11 @@ export const adduser = async (req, res) => {
   try {
     const user = req.body;
     console.log(user);
-    const isfound = await User.findOne({ email: user.email });
+    const isfound = await User.findOne({ email: user.email })
+      .maxTimeMS(20000)
+      .exec((err, user) => {
+        // Traitement de la réponse ou gestion des erreurs
+      });
     if (isfound)
       return res.status(400).json({ message: "user already exists" });
     console.log("hi from checkuser");
@@ -110,4 +114,4 @@ export const updateuser = async (req, res) => {
       message: error.message,
     });
   }
-};  
+};
