@@ -1,4 +1,3 @@
-import { isValidObjectId } from "mongoose";
 import Patient from "../schemas/patient.js";
 export const getallpatient = async (req, res) => {
   try {
@@ -64,13 +63,25 @@ export const deletepatient = async (req, res) => {
 //     });
 //   }
 // };
+const {
+  Types: { ObjectId },
+} = require("mongoose");
+
 export const updatepatient = async (req, res) => {
   try {
     const patientId = req.params.id;
+
+    // Vérifiez que patientId est bien une chaîne de 24 caractères hexadécimaux
+    if (!ObjectId.isValid(patientId)) {
+      return res.status(400).json({
+        message: "Invalid patient ID",
+      });
+    }
+
     const updatedData = req.body;
 
-    // Utilisez mongoose.Types.ObjectId pour convertir la chaîne de l'ID en ObjectId
-    const objectIdPatientId = new isValidObjectId(patientId);
+    // Utilisez new pour créer une instance de ObjectId
+    const objectIdPatientId = new ObjectId(patientId);
 
     // Utilisez la méthode updateOne pour mettre à jour le document du patient
     const result = await Patient.updateOne(
