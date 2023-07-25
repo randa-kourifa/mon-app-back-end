@@ -1,4 +1,4 @@
-import { ObjectId } from "mongodb";
+import { isValidObjectId } from "mongoose";
 import Patient from "../schemas/patient.js";
 export const getallpatient = async (req, res) => {
   try {
@@ -70,7 +70,7 @@ export const updatepatient = async (req, res) => {
     const updatedData = req.body;
 
     // Utilisez mongoose.Types.ObjectId pour convertir la chaîne de l'ID en ObjectId
-    const objectIdPatientId = new ObjectId(patientId);
+    const objectIdPatientId = new isValidObjectId(patientId);
 
     // Utilisez la méthode updateOne pour mettre à jour le document du patient
     const result = await Patient.updateOne(
