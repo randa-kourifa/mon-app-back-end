@@ -63,7 +63,7 @@ export const deletepatient = async (req, res) => {
 //     });
 //   }
 // };
-const updatepatient = async (req, res) => {
+export const updatepatient = async (req, res) => {
   try {
     const patientId = req.params.id;
     const updatedData = req.body;
