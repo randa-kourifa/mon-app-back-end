@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Patient from "../schemas/patient.js";
 export const getallpatient = async (req, res) => {
   try {
