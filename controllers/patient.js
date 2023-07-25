@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import Patient from "../schemas/patient.js";
 export const getallpatient = async (req, res) => {
   try {
@@ -63,9 +64,6 @@ export const deletepatient = async (req, res) => {
 //     });
 //   }
 // };
-const {
-  Types: { ObjectId },
-} = require("mongoose");
 
 export const updatepatient = async (req, res) => {
   try {
