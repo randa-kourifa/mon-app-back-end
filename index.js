@@ -9,7 +9,7 @@ mongoose.set("strictQuery", false);
 async function connectToDatabase() {
   try {
     await mongoose.connect(
-      "mongodb+srv://randakourifa:3z2LWJBXY8MgjCOt@cluster0.t0ljlki.mongodb.net/test2retryWrites=true&w=majority",
+      "mongodb+srv://randakourifa:3z2LWJBXY8MgjCOt@cluster0.t0ljlki.mongodb.net/test2?retryWrites=true&w=majority",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
